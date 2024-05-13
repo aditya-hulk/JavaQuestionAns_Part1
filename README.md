@@ -112,6 +112,28 @@ Exception in thread "main" java.lang.ArithmeticException: / by zero
     - c) Location at which exception occurs i.e stack trace.
 2. After creating the exception object, method handover it to the Jvm.
 3. Jvm will check whether the method contain any execption handling code or not. 
+	- If method doesn't contain exception handling code then JVM terminates that method abnormally & removes the corresponding entry from the stack
+4) Then JVM identifies caller method and check whether the caller method contain any Exception Handling code or not.
+	- If caller  method doesn't contain Exception handling code then JVM terminates the caller method abnormally and removes their corresponding entry from the stack.
+5) This process will be continued until main() method.
+	- If the main() method also dosen't contain exception handling code then Jvm terminates main() method abnormally and removes corresponding entry from the stack.
+6) Then Jvm handover's responsibility of Exception handling to default exception handler which is a part of Jvm.
+7) The default exception handler prints the exception information in the following format & terminates program abnormally.
+
+Exception in thread 'XXX': Name of Exception : Description i.e it entire Stack trace.
+# 1.10 What do you understand by unreachable catch block error.
+![alt text](image-13.png)
+# 1.11 What is multi catch block?
+![alt text](image-14.png)
+# 1.12 What is diff bet final, finally and finalize in Java?
+![alt text](image-15.png)
+### Just before destroying an object the garbage collectors  always calls the finalize() method to perform clean up activities on that object.
+### Note: 
+The Garbage collector calls the finalize() method only once on any object.
+### Syntax:  
+protected void finalize throws Throwable{}
+- Since the Object class contains the finalize method hence finalize method is available for every java class.
+ - Garbage Collector can call the finalize() method on any java object.
 
 
     
